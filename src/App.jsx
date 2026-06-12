@@ -1,63 +1,70 @@
 import {useState} from 'react'
 import Navbar from './assets/componentes/Navbar.jsx';
+import ProdutoLista from "./assets/componentes/ProdutoLista.jsx";
 import BlusaPolo from './assets/imagem/BlusaPolo.jpeg'
 import Bone from './assets/imagem/Bone.jpeg'
 import Colete from './assets/imagem/Colete.jpeg'
 import Jaleco from './assets/imagem/Jaleco.jpeg'
 import Jaqueta from './assets/imagem/Jaqueta.jpeg'
 import UniformeJogos from './assets/imagem/UniformeJogos.jpeg'
-import ProductCard from './assets/componentes/ProductCard.jsx';
-
-const products = [
-  {
-    id: 1,
-    name: "Camisa Polo Personalizada ",
-    price: "199,90",
-    image: BlusaPolo.jpeg,
-  },
-  {
-    id: 2,
-    name: "Boné Personalizado",
-    price: "149,90",
-    image: Bone.jpeg,
-  },
-  {
-    id: 3,
-    name: "Colete Feminino Personalizado",
-    price: "89,90",
-    image: Colete.jpeg,
-  },
-  {
-    id: 4,
-    name: "Jaqueta Personalizada",
-    price: "259,90",
-    image: Jaqueta.jpeg,
-  },
-  {
-    id: 5,
-    name: "Jaqueta Personalizada",
-    price: "59,90",
-    image: Jaleco.jpeg,
-  },
-  {
-    id: 6,
-    name: "Uniforme de Jogos Internos Personalizados",
-    price: "49,90",
-    image: UniformeJogos.jpeg,
-  },
-];
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isCartOpen , setIsCartOpen] = useState(false);
 
+  function handleAddToCart(produto) {
+    setCartItems([...cartItems, produto]);
+    console.log(cartItems)
+  }
+const produtos = [
+  {
+    id: 1,
+    nome: "Camisa Polo Personalizada ",
+    preco: "199,90",
+    imagem: BlusaPolo,
+  },
+  {
+    id: 2,
+    nome: "Boné Personalizado",
+    preco: "149,90",
+    imagem: Bone,
+  },
+  {
+    id: 3,
+    nome: "Colete Feminino Personalizado",
+    preco: "89,90",
+    imagem: Colete,
+  },
+  {
+    id: 4,
+    nome: "Jaqueta Personalizada",
+    preco: "259,90",
+    imagem: Jaqueta,
+  },
+  {
+    id: 5,
+    nome: "Jaleco Personalizada",
+    preco: "59,90",
+    imagem: Jaleco,
+  },
+  {
+    id: 6,
+    nome: "Uniforme de Jogos Personalizados",
+    preco: "49,90",
+    imagem: UniformeJogos,
+  },
+];
   
   return (
     <div>
       <Navbar />
-      <h1>Minha Loja</h1>
-      {products.map((product) => (<ProductCard name={product.name} price={product.price} image={product.image}/>))}
-      
+      <main className="pagina-princ">
+        <div className="Banner">
+            <img src="" alt="" />
+        </div>
+        <h2 className="titulo-pagiPrinc">Nossos Modelos</h2>
+        <ProdutoLista produtos={produtos}/>
+      </main>
     </div>
     
   );
