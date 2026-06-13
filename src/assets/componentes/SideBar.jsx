@@ -9,13 +9,7 @@ function SideBar(props) {
         <div className="Cart-sidebar">
           <div className="Cart-header">
             <h2> Seu Carrinho</h2>
-            <button
-              className="Cart-fecha"
-              onClick={() => {
-                props.closeCart(false);
-              }} >
-              X
-            </button>
+            <button className="Cart-fecha" onClick={() => { props.closeCart(false); }}> ✕ </button>
           </div>
           <div className="Cart-item">
             {props.cartItems.length == 0 ? (

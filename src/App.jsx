@@ -8,62 +8,33 @@ import Jaleco from './assets/imagem/Jaleco.jpeg'
 import Jaqueta from './assets/imagem/Jaqueta.jpeg'
 import UniformeJogos from './assets/imagem/UniformeJogos.jpeg'
 
+const produtos = [
+  {id: 1, nome: "Camisa Polo Personalizada ", preco: "199,90", imagem: BlusaPolo,},
+  { id: 2, nome: "Boné Personalizado", preco: "149,90", imagem: Bone,},
+  {id: 3, nome: "Colete Feminino Personalizado", preco: "89,90", imagem: Colete,},
+  { id: 4, nome: "Jaqueta Personalizada", preco: "259,90", imagem: Jaqueta,},
+  {id: 5, nome: "Jaleco Personalizada", preco: "59,90", imagem: Jaleco,},
+  { id: 6, nome: "Uniforme de Jogos Personalizados", preco: "49,90", imagem: UniformeJogos,},
+];
+
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen , setIsCartOpen] = useState(false);
+  const [cartContagem, setCartContag] = useState(0)
 
-  function handleAddToCart(produto) {
-    setCartItems([...cartItems, produto]);
-    console.log(cartItems)
+  function hAddAoCart(produto){
+    setCartContag([...cartItems, produto])
   }
-const produtos = [
-  {
-    id: 1,
-    nome: "Camisa Polo Personalizada ",
-    preco: "199,90",
-    imagem: BlusaPolo,
-  },
-  {
-    id: 2,
-    nome: "Boné Personalizado",
-    preco: "149,90",
-    imagem: Bone,
-  },
-  {
-    id: 3,
-    nome: "Colete Feminino Personalizado",
-    preco: "89,90",
-    imagem: Colete,
-  },
-  {
-    id: 4,
-    nome: "Jaqueta Personalizada",
-    preco: "259,90",
-    imagem: Jaqueta,
-  },
-  {
-    id: 5,
-    nome: "Jaleco Personalizada",
-    preco: "59,90",
-    imagem: Jaleco,
-  },
-  {
-    id: 6,
-    nome: "Uniforme de Jogos Personalizados",
-    preco: "49,90",
-    imagem: UniformeJogos,
-  },
-];
-  
+
   return (
     <div>
-      <Navbar />
+      <Navbar cartContagem={cartItems.length}/>
       <main className="pagina-princ">
         <div className="Banner">
             <img src="" alt="" />
         </div>
         <h2 className="titulo-pagiPrinc">Nossos Modelos</h2>
-        <ProdutoLista produtos={produtos}/>
+        <ProdutoLista produtos={produtos} onAddAoCart={hAddAoCart}/>
       </main>
     </div>
     

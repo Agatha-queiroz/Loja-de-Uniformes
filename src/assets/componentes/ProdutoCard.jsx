@@ -1,4 +1,4 @@
-function ProdutoCard({ imagem, nome, preco }) {
+function ProdutoCard({ imagem, nome, preco, onAddAoCart}) {
   return (
     <div className="produto-card">
       <img src={imagem} alt={nome} />
@@ -10,7 +10,7 @@ function ProdutoCard({ imagem, nome, preco }) {
           R$ {preco}
         </p>
 
-        <button className="botao-add">
+        <button className="botao-add" onClick={()=> onAddAoCart({nome,preco,imagem})}>
           Adicionar ao carrinho
         </button>
       </div>
