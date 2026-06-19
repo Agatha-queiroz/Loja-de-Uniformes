@@ -2,13 +2,14 @@ import Logo from '../imagem/LogoMarca.png'
 import compras from '../imagem/compras.png'
 import Procurar from '../imagem/procurar.png'
 
-function Navbar({cartContagem ,onCartClick}) {
+function Navbar({cartContagem ,onCartClick,setBusca,busca}) {
+  
   return (
     <nav className="navbar">
       <img  className="logo" src={Logo} alt="Logo da Empresa"/>
       
       <div className="pesquisar-box">
-      <input id="barra-pesq" type="text" placeholder="Pesquisar"/>
+      <input id="barra-pesq" type="text" placeholder="Pesquisar" value={busca} onChange={(event) => { setBusca(event.target.value) }}/>
       <button  className="btn-pesq"><img src={Procurar} alt="" /></button>
       </div>
 

@@ -30,6 +30,19 @@ const produtos = [
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [busca, setBusca] = useState('');
+  const [items, setItems] = useState(produtos)
+
+  const filtrados = items.filter( produto=> {
+    return produto.nome.toLowerCase().includes(busca.toLowerCase())
+  })
+
+  function apagar(id) {
+    const novaLIsta = items.filter((produto)=> {
+      return produto.id != id
+    })
+   setItems(novaLIsta)
+  }
 
   function hAddAoCart(produto) {
     setCartItems([
@@ -116,6 +129,8 @@ function App() {
       <Navbar
         cartContagem={cartItems.length}
         onCartClick={hAbreCart}
+     
+        setBusca={setBusca}
       />
 
       <div className="Banner">
@@ -128,7 +143,7 @@ function App() {
       {isCartOpen && (
         <SideBar
           cartItems={cartItems}
-          onRemove={hRemoveDoCart}
+          onRemove={apagar}
           onFecha={hFechaCart}
           toggleCard={toggleCard}
           aumentarQuantidade={
@@ -152,7 +167,9 @@ function App() {
           <ProdutoLista
             produtos={produtos}
             onAddAoCart={hAddAoCart}
+            filtrados={filtrados}
           />
+         
         </div>
         </main>
           <div className="footer">

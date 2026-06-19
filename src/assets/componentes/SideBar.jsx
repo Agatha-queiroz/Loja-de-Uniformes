@@ -213,7 +213,7 @@ function SideBar({
 
                       )}
 
-                      <button className="cart-remove" onClick={() => onRemove(index)}>
+                      <button className="cart-remove" onClick={() => onRemove(id)}>
                         Remover Produto
                       </button>
 
