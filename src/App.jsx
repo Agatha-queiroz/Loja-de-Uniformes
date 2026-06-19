@@ -32,10 +32,29 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [busca, setBusca] = useState('');
   const [items, setItems] = useState(produtos)
+  const [inputNome, setInputNome]     = useState("");
+  const [inputPreco, setInputPreco]   = useState("");
+  const [inputImagem, setInputImagem] = useState("");
+
 
   const filtrados = items.filter( produto=> {
     return produto.nome.toLowerCase().includes(busca.toLowerCase())
   })
+
+
+  function cadastrar() {
+    if (!inputNome.trim()) return;
+    const novoItem = {
+      id: Date.now(),
+      nome: inputNome.trim(),
+      valor: Number(inputValor) || 0,
+      imagem: inputImagem.trim(),
+    };
+    setItens([...itens, novoItem]);
+    setInputNome("");
+    setInputValor("");
+    setInputImagem("");
+  }
 
   function apagar(id) {
     const novaLIsta = items.filter((produto)=> {
@@ -176,6 +195,42 @@ function App() {
             <img src={Longa} />
             <img src={Curta} />
           </div>
+          <div className="container">
+      <h1>📋 Tecnologias</h1>
+
+      {/* Formulário */}
+      <div className="form">
+        <h2>{editandoId ? "Editar tecnologia" : "Cadastrar tecnologia"}</h2>
+
+        <input
+          type="text"
+          placeholder="Nome da tecnologia"
+          value={inputNome}
+          onChange={(e) => setInputNome(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Valor (R$)"
+          value={inputValor}
+          onChange={(e) => setInputValor(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="URL da imagem"
+          value={inputImagem}
+          onChange={(e) => setInputImagem(e.target.value)}
+        />
+
+        {editandoId ? (
+          <div className="form-botoes">
+            <button className="btn-salvar" onClick={salvarEdicao}>Salvar</button>
+            <button className="btn-cancelar" onClick={cancelarEdicao}>Cancelar</button>
+          </div>
+        ) : (
+          <button onClick={cadastrar}>Cadastrar</button>
+        )}
+      </div>
+
     </div>
 
   );
