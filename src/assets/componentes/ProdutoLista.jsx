@@ -1,6 +1,6 @@
 import ProdutoCard from "./ProdutoCard";
 
-function ProdutoLista({produtos, onAddAoCart,filtrados}) {
+function ProdutoLista({produtos, onAddAoCart,filtrados,novoItem}) {
   return (
     <div className="produto-grid">
 
@@ -11,6 +11,7 @@ function ProdutoLista({produtos, onAddAoCart,filtrados}) {
           nome={produto.nome}
           preco={produto.preco}
           onAddAoCart={onAddAoCart}
+          novoItem={novoItem}
         /> 
        
       ))} 

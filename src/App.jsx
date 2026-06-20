@@ -35,6 +35,7 @@ function App() {
   const [inputNome, setInputNome]     = useState("");
   const [inputPreco, setInputPreco]   = useState("");
   const [inputImagem, setInputImagem] = useState("");
+  const [editandoId, setEditandoId]= useState(null)
 
 
   const filtrados = items.filter( produto=> {
@@ -47,13 +48,20 @@ function App() {
     const novoItem = {
       id: Date.now(),
       nome: inputNome.trim(),
-      valor: Number(inputValor) || 0,
+      preco: Number(inputPreco) ||  0,
       imagem: inputImagem.trim(),
     };
-    setItens([...itens, novoItem]);
+    console.log(novoItem)
+    setItems([...items, novoItem]);
     setInputNome("");
-    setInputValor("");
+    setInputPreco("");
     setInputImagem("");
+  }
+  function iniciarEdicao(produto){
+    setEditandoId(produto.id)
+    setInputNome(produto.nome)
+    setInputPreco(produto.preco)
+    setInputImagem(produto.imagem)
   }
 
   function apagar(id) {
@@ -186,6 +194,7 @@ function App() {
           produtos={produtos}
           onAddAoCart={hAddAoCart}
           filtrados={filtrados}
+         
         />
         
       </div>
@@ -197,7 +206,7 @@ function App() {
         <div className="container">
           <h1>📋 Tecnologias</h1>
           <div className="form">
-           { /*<h2>{editandoId ? "Editar tecnologia" : "Cadastrar tecnologia"}</h2>*/}
+           <h2>{editandoId ? "Editar tecnologia" : "Cadastrar tecnologia"}</h2>
 
             <input
               type="text"
@@ -205,11 +214,7 @@ function App() {
               value={inputNome}
               onChange={(e) => setInputNome(e.target.value)}
             />
-            <input
-              type="number"
-              placeholder="Valor (R$)"
-              value={inputPreco}
-              onChange={(e) => setInputValor(e.target.value)}
+            <input type="number" placeholder="Valor (R$)" value={inputPreco} onChange={(e) => setInputPreco(e.target.value)}
             />
             <input
               type="text"
@@ -218,14 +223,14 @@ function App() {
               onChange={(e) => setInputImagem(e.target.value)}
             />
 
-            {/*{editandoId ? (
+            {editandoId ? (
               <div className="form-botoes">
                 <button className="btn-salvar" onClick={salvarEdicao}>Salvar</button>
                 <button className="btn-cancelar" onClick={cancelarEdicao}>Cancelar</button>
               </div>
-            ) : (*/}
+            ) : (
               <button onClick={cadastrar}>Cadastrar</button>
-           {/* )}*/}
+            )}
           </div>
         </div>
       </div>
