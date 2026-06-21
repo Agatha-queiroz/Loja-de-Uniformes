@@ -4,7 +4,9 @@ function ProdutoCard({
   imagem,
   nome,
   preco,
-  onAddAoCart
+  onAddAoCart,
+  onApagar,
+  onEditar
 }) {
 
   const [tamanho, setTamanho] = useState("");
@@ -25,6 +27,10 @@ function ProdutoCard({
     });
 
   };
+
+
+ 
+
 
   return (
     <div className="produto-card">
@@ -127,6 +133,18 @@ function ProdutoCard({
         <button className="botao-add" onClick={adicionarProduto}>
           Adicionar ao Carrinho
         </button>
+
+        <div className="acoes"> 
+        <button className="btn-apagar" onClick={onApagar}>
+        Apagar
+        </button>
+        </div>
+        
+        <button onClick={onEditar}>
+         Editar
+         </button>
+
+
 
       </div>
 
