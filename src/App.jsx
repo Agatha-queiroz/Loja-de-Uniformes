@@ -20,31 +20,31 @@ const produtos = [
   {
     id: 1,
     nome: "Camisa Polo Personalizada",
-    preco: "75,90",
+    preco: 75.90,
     imagem: BlusaPolo,
   },
   {
     id: 2,
     nome: "Camisa Social Feminina",
-    preco: "50,90",
+    preco: 50.90,
     imagem: CamisaSocialFem,
   },
   {
     id: 3,
     nome: "Camisa Social Masculina",
-    preco: "50,90",
+    preco: 50.90,
     imagem: CamisaSocialMasc,
   },
   {
     id: 4,
     nome: "Uniforme de Jogos Personalizados",
-    preco: "200,00",
+    preco: 200.00,
     imagem: UniformeJogos,
   },
-  { id: 5, nome: "Colete Personalizado", preco: "89,90", imagem: Colete },
-  { id: 6, nome: "Jaqueta Personalizada", preco: "190,90", imagem: Jaqueta },
-  { id: 7, nome: "Jaleco Personalizado", preco: "69,90", imagem: Jaleco },
-  { id: 8, nome: "Boné Personalizado", preco: "90,00", imagem: Bone },
+  { id: 5, nome: "Colete Personalizado", preco: 89.90, imagem: Colete },
+  { id: 6, nome: "Jaqueta Personalizada", preco: 190.90, imagem: Jaqueta },
+  { id: 7, nome: "Jaleco Personalizado", preco: 69.90, imagem: Jaleco },
+  { id: 8, nome: "Boné Personalizado", preco: 90.00, imagem: Bone },
 ];
 
 function App() {
@@ -61,13 +61,27 @@ function App() {
     return produto.nome.toLowerCase().includes(busca.toLowerCase());
   });
 
+  function iniciarEdicao(produto) {
+    setEditandoId(produto.id);
+    setInputNome(produto.nome);
+    setInputPreco(produto.preco);
+    setInputImagem(produto.imagem);
+  }
+  
+  function cancelarEdicao() {
+    setEditandoId(null);
+    setInputNome("");
+    setInputPreco("");
+    setInputImagem("");
+  }
+
   // Função de Cadastrar
   function cadastrar() {
     if (!inputNome.trim()) return;
     const novoItem = {
       id: Date.now(),
       nome: inputNome.trim(),
-      preco: Number(inputPreco) || 0,
+      preco: inputPreco || "0",
       imagem: inputImagem.trim(),
     };
     console.log(novoItem);
@@ -76,33 +90,20 @@ function App() {
     setInputPreco("");
     setInputImagem("");
   }
-  function iniciarEdicao(produto) {
-    setEditandoId(produto.id);
-    setInputNome(produto.nome);
-    setInputPreco(produto.preco);
-    setInputImagem(produto.imagem);
-  }
 
   function salvarEdicao() {
     if (!inputNome.trim()) return;
-    const atualizada = items.map((produto) =>
-      produto.id === editandoId
+    const atualizada = items.map((produto) =>{
+      return produto.id === editandoId
         ? {
-            ...produto,
-            nome: inputNome.trim(),
-            preco: Number(inputPreco) || 0,
-            imagem: inputImagem.trim(),
+          id: produto.id,
+          nome: inputNome,
+          preco: inputPreco,
+          imagem: inputImagem,
           }
         : produto
-    );
+      });
     setItems(atualizada);
-    setEditandoId(null);
-    setInputNome("");
-    setInputPreco("");
-    setInputImagem("");
-  }
-
-  function cancelarEdicao() {
     setEditandoId(null);
     setInputNome("");
     setInputPreco("");
@@ -116,10 +117,6 @@ function App() {
     });
     setItems(novaLIsta);
   }
-
-
-
-
 
   function hAddAoCart(produto) {
     setCartItems([

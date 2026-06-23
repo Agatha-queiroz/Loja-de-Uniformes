@@ -7,7 +7,7 @@ body {
   font-family: sans-serif;
   background-color: #F8F6F2 ;
   --vermelho: #e8072588;
-  --cinza: #1c272d;
+  --preto-cinza: #1c272d;
   --laranja: #eda232;
   --branco: #ebe4e0;
 }
@@ -48,8 +48,13 @@ body::-webkit-scrollbar-thumb {
 
 .navbar-cart {
   font-size: 14px;
+  display: flex;
   cursor: pointer;
+  align-items: center;
 }
+.cart-nome{
+  font-weight: bold;
+  margin: 5px 10px 1px 1px;}
 
 .logo{
   height: 55px;
@@ -106,7 +111,7 @@ body::-webkit-scrollbar-thumb {
  }
  .Cont-carr{
   position: absolute;
-    color: var(--cinza);
+    color: var(--preto-cinza);
     top: 23px;
     right: 18px;
  }
@@ -742,9 +747,24 @@ body::-webkit-scrollbar-thumb {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
+  width: 110px;
+}
+
+.form-botoes .btn-salvar{
+  background: var(--preto-cinza);
 }
 
 .btn-apagar:hover {
   background: #bb2d3b;
 }
 
+.bnt-editar {
+  background: var(--laranja);
+  color: #ffffff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 110px;
+}

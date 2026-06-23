@@ -1,6 +1,6 @@
 import ProdutoCard from "./ProdutoCard";
 
-function ProdutoLista({produtos, onAddAoCart,filtrados,novoItem, apagar }) {
+function ProdutoLista({produtos, onAddAoCart,filtrados,novoItem, apagar,iniciarEdicao }) {
   return (
     <div className="produto-grid">
 
@@ -13,7 +13,7 @@ function ProdutoLista({produtos, onAddAoCart,filtrados,novoItem, apagar }) {
           onAddAoCart={onAddAoCart}
           novoItem={novoItem}
           onApagar={() => apagar(produto.id)}
-          onEditar={() => iniciarEdicao(produto)}
+          oniniciarEdicao={() => iniciarEdicao(produto)}
          
           
         /> 

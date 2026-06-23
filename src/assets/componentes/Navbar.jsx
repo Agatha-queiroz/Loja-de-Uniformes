@@ -13,7 +13,7 @@ function Navbar({cartContagem ,onCartClick,setBusca,busca}) {
       <button  className="btn-pesq"><img src={Procurar} alt="" /></button>
       </div>
 
-      <div className="navbar-cart" onClick={onCartClick}> Carrinho <img src={compras} alt="carrinho" /> 
+      <div className="navbar-cart" onClick={onCartClick}><span className="cart-nome">Carrinho</span>  <img src={compras} alt="carrinho" /> 
         <span className="Cont-carr"> {cartContagem} </span>
       </div>
     </nav>

@@ -6,7 +6,7 @@ function ProdutoCard({
   preco,
   onAddAoCart,
   onApagar,
-  onEditar
+  oniniciarEdicao
 }) {
 
   const [tamanho, setTamanho] = useState("");
@@ -129,23 +129,21 @@ function ProdutoCard({
         <p className="produto-preco">
           R$ {preco}
         </p>
-
-        <button className="botao-add" onClick={adicionarProduto}>
-          Adicionar ao Carrinho
-        </button>
-
-        <div className="acoes"> 
-        <button className="btn-apagar" onClick={onApagar}>
-        Apagar
-        </button>
-        </div>
-        
-        <button onClick={onEditar}>
-         Editar
-         </button>
-
-
-
+          
+            <button className="botao-add" onClick={adicionarProduto}>
+              Adicionar ao Carrinho
+            </button>
+            <div className="form-botoes">
+            <div className="acoes"> 
+            <button className="btn-apagar" onClick={onApagar}>
+            Apagar
+            </button>
+            </div>
+            
+            <button className="bnt-editar"onClick={oniniciarEdicao}>
+            Editar
+            </button>
+            </div>
       </div>
 
     </div>

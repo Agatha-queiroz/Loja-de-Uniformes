@@ -2,13 +2,10 @@ function SideBar({
   cartItems, onRemove,
   onFecha,toggleCard,
   aumentarQuantidade,diminuirQuantidade,
-  selecionarTamanho,atualizarMedida,
-}) {
+  selecionarTamanho,atualizarMedida},props) {
+    
   const total = cartItems.reduce((soma, item) => {
-    const precoItem = parseFloat(
-      item.preco.replace(",", ".")
-    );
-
+    const precoItem = parseFloat(item.preco)
     return soma + precoItem * item.quantidade;
   }, 0);
 
